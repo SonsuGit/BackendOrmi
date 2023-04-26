@@ -5,9 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <!-- 아래거 적용안하면 img가 baseline에 맞춰서 생성되어서 div -->
+    <style>
+        img{
+            vertical-align: top;
+        }
+    </style>
 </head>
 <body>
+    <!-- br태그와 p태그 -->
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium tempore voluptates earum quia dignissimos ex eveniet non deserunt, similique dolorum est possimus accusamus ab, quae error quo nostrum tenetur asperiores.</p>
     <p>Lorem ipsum dolor sit amet <br> consectetur adipisicing elit. Laudantium tempore voluptates earum quia dignissimos ex eveniet non deserunt, similique dolorum est possimus accusamus ab, quae error quo nostrum tenetur asperiores.</p>
+    <code>push()</code>
+    <!-- pre태그는 띄어쓰기도 표현됨 태그는 제외인듯 -->
+    <pre>(-_-) OTL <p> pupu </p></pre>
+    <!-- Ordered List -->
+    <ol type="I" start="8">
+        <li> sub</li>
+        <li> main></li>
+    </ol>
+    <ul>
+        <li>hi
+            <div>first item</div>
+        </li>
+        <li>this is unordered list</li>
+        <li>li는 ol이나 ul의 자식으로만 표현이 가능 == 단독사용 X </li>
+        <li>ul이나 ol의 자식은 무조건 li만 가능</li>
+    </ul>
+    <!-- 이미지는 인라인요소라 가로로 쌓임 -->
+    <div style="background-color: bisque;">
+    <img src="./img/est.jpg" alt="ESTSoft">
+    <img src="./img/est.jpg" alt="ESTSoft">
+    <img src="./img/est.jpg" alt="ESTSoft">
+    <img src="./img/est.jpg" alt="ESTSoft">
+    <img src="./img/est.jpg" alt="ESTSoft">
+    <img src="./img/est.jpg" alt="ESTSoft">
+    </div>
 </body>
 </html>
