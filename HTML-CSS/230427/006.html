@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      p {
+        color: red;
+      }
+      #hello {
+        color: rgb(25, 45, 62);
+      }
+      h1.hi {
+        color: seagreen;
+      }
+      [type="email"] {
+        border-color: red;
+      }
+      input[type="email"] {
+        color: royalblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="hi">Hello</h1>
+      <p>Hello</p>
+      <p class="hi">Hello</p>
+      <button type="button" id="hello">Hello</button>
+      <label>email <input type="email" id="emial" /></label>
+    </div>
+  </body>
+</html>

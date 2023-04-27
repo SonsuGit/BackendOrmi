@@ -1,0 +1,51 @@
+body,
+h1,
+p {
+  margin: 0;
+}
+.container {
+  width: 360px;
+  margin: 40px auto;
+}
+.title,
+.description {
+  text-align: center;
+}
+.description {
+  margin: 20px 0;
+}
+form > div {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+/* label-width == username,password임 */
+.username,
+.password {
+  display: inline-block;
+  width: 70px;
+}
+[type="text"],
+[type="password"] {
+  width: 290px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.submitButton {
+  background-color: royalblue;
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgb(6, 67, 251);
+  border-width: 0 0 3px 0;
+  border-radius: 4px;
+  color: white;
+  margin-top: 20px;
+  font: inherit;
+}
+.submitButton:active {
+  border: 0;
+}
+.saveid {
+  margin: auto;
+}
