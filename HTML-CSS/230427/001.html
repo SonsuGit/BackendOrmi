@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>select</title>
+  </head>
+  <body>
+    <label>오늘의 점심 메뉴</label>
+    <select>
+      <optgroup label="점심">
+        <option selected>간장 계란밥</option>
+        <option>라면1</option>
+        <option>라면2</option>
+        <option>라면3</option>
+      </optgroup>
+      <optgroup label="저녁">
+        <option selected>간장 계란밥</option>
+        <option>라면1</option>
+        <option>라면2</option>
+        <option>라면3</option>
+      </optgroup>
+    </select>
+    <fieldset>
+      <legend>사용기술</legend>
+      <label><input type="checkbox" />HTML</label>
+      <input type="checkbox" id="tech1" />
+      <label for="tech1">체크박스1</label>
+    </fieldset>
+    <!-- textarea는 여러줄가능, input text는 한줄만 가능 -->
+    <textarea name="txt" id="txtsrc" cols="30" rows="10"></textarea>
+  </body>
+</html>
