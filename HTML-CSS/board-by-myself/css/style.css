@@ -4,6 +4,7 @@ h1,
 p {
   margin: 0;
   border: 0;
+  text-decoration: 0;
 }
 
 .container {
