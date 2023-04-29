@@ -7,9 +7,9 @@ ul {
   padding: 0;
   margin: 0;
 }
-a{
+a {
   text-decoration: 0;
-  text;
+  color: inherit;
 }
 /* layout */
 body {
@@ -117,7 +117,7 @@ form > div {
 }
 .field ul li {
   /* 1.가로배치 */
-  /* display: inline-block; */
+  /* display: inline-block;*/
 }
 .field legend {
   float: left;
@@ -161,20 +161,20 @@ form > div {
   text-overflow: ellipsis;
 }
 /* main 내부 컨텐츠 */
-.main-title{
+.main-title {
   margin: 60px 0 10px;
 }
-.main-desc{
+.main-desc {
   margin-bottom: 20px;
 }
-.main-desc strong{
+.main-desc strong {
   color: royalblue;
 }
-.btn-group{
+.btn-group {
   margin-top: 20px;
   text-align: right;
 }
-.btn{
+.btn {
   background-color: #eee;
   width: 100px;
   height: 32px;
@@ -185,7 +185,7 @@ form > div {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font:inherit;
+  font: inherit;
 }
 /* write */
 .write textarea {
@@ -198,19 +198,19 @@ form > div {
 #category,
 #write-title,
 #write-detail,
-#file-attach{
+#file-attach {
   display: block;
 }
-#write-title{
+#write-title {
   width: 100%;
 }
-.write select{
+.write select {
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 200px;
   height: 32px;
 }
 
-.write-container{
+.write-container {
   padding: 20px;
 }
