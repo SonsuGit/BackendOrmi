@@ -22,6 +22,8 @@ body {
   flex-grow: 1;
   width: 1000px;
   margin: auto;
+  justify-content: center;
+  padding-top: 20px;
 }
 .header {
   display: flex;
@@ -213,4 +215,25 @@ form > div {
 
 .write-container {
   padding: 20px;
+}
+/* view */
+.article-header {
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid black;
+  background-color: #ddd;
+  padding: 20px;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.article-details {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.article-details > p:nth-child(2) {
+  padding-left: 15px;
+  padding-right: 15px;
+  border-left: 1.5px solid gray;
+  border-right: 1.5px solid gray;
 }
