@@ -1,6 +1,6 @@
 def writefile(func):
     def wrap(a, b):
-        f = open("resultsss.txt", "w")
+        f = open("result.txt", "w")
         f.write('{\n')
 
         f.write(f'\t"a": {a},\n')
