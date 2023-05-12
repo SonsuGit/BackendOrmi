@@ -35,7 +35,7 @@ def divisor(num):
     for i in range(1, num//2+1):
         if num % i == 0:
             div.append(i)
-        div.append(num)
+    div.append(num)
     print(div)
 
 divisor(num)
