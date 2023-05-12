@@ -76,6 +76,7 @@ solution([[10, 5], [20, 3], [30, 4], [40, 1]])
 # 주어진 문자열의 합을 구하는 코드를 작성하세요.
 def solution(s):
     s = list(map(int, s))
+    # == [int (i) for i in '11123']
     return print(sum(s))
 
 solution('11123') 
