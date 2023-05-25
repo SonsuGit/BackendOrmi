@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <style>
+            body {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .flex-item {
+                width: 300px;
+                padding: 10px;
+                border: 1px gray solid;
+                border-radius: 5%;
+                text-align: center;
+                /* align-items: center; */
+            }
+            .thumbnail {
+                width: 250px;
+                border-radius: 15%;
+            }
+            .imgBox {
+                width: 300px;
+                height: 300px;
+            }
+            .title {
+                text-align: center;
+                flex-wrap: wrap;
+            }
+            .study_status {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+        <script src="data2.js"></script>
+        <script>
+            console.log(data);
+            s = "";
+            for (const i of data) {
+                s += `
+                <div class = "flex-item">
+                    <div class = 'imgBox'>
+                        <img class = "thumbnail" src="${i.thumbnail}" alt="">
+                        </div>
+                    <p class = "difficulty">${i.difficulty.name}</p>
+                    <h2 class = "title">${i.title}</h2>
+                    <p class = "study_status">${i.study_status.name}</p>
+                </div>
+                `;
+            }
+            document.querySelector("body").innerHTML = s;
+        </script>
+    </body>
+</html>
