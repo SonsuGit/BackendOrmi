@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>pyscript tutorial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+</head>
+<body>
+    <div id="test" class="one"></div>
+    <py-script>
+    # https://docs.pyscript.net/latest/reference/API/element.html
+    # 클래스를 추가하거나 삭제 등의 예제는 하지 않습니다.
+    # 아래와 같은 코드는 기본적으로 작동하지 않습니다.
+    # id기준으로만 가져옵니다.
+    # one = Element('.one')
+    # one.write('hello')
+    
+    from js import document
+
+    class_name = 'one'
+    element = document.querySelector(f'.{class_name}');
+    print(element)
+    print(type(element))
+    print(dir(element))
+
+    element.innerHTML = 'hello world'
+
+    </py-script>
+</body>
+</html>

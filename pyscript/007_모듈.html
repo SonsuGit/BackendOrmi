@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>pyscript tutorial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <py-config>
+        [[fetch]]
+        from = "./py"
+        files = ["test.py"]
+    </py-config>
+
+</head>
+<body>
+
+    <py-script>
+    import test
+
+    print(test.name)
+    print(test.age)
+    test.print_hello()
+
+    </py-script>
+</body>
+</html>

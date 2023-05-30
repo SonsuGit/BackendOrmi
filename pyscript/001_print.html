@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pyscript tutorial</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <h1>hello world</h1>
+    <div id="one"></div>
+    <div id="two"></div>
+    <py-script>
+        print('Hello World')
+        for i in range(10):
+            print('hello world!!')
+        name = 'hojun'
+        print(f'{name}, hello!')
+        # pyscript에서 pyscript.write문을 권고하지 않습니다!
+        # pyscript.write('one', 'hello world 1')
+        # pyscript.write('two', 'hello world 2')
+        one = Element('one')
+        two = Element('two')
+        one.write('1')
+        two.write('2')
+        print(type(one))
+        print(dir(one))
+    </py-script>
+</body>
+</html>

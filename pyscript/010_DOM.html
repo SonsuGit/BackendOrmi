@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>pyscript tutorial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+</head>
+<body>
+    <!-- https://docs.pyscript.net/unstable/guides/event-handlers.html -->
+    <div id="test" class="one"></div>
+    <input id="test2" type="text">
+    <button id="test3" py-click="functiontest()">불러옵니다.</button>
+    <div id="test4"></div>
+    <py-script>
+    def functiontest(e):
+        test4 = Element('test4')
+        test4.write(test2.element.value)
+
+    test = Element('test')
+    test.write('hello')
+    test2 = Element('test2')
+    </py-script>
+</body>
+</html>
