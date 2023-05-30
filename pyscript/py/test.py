@@ -1,4 +1,8 @@
-name = "hojun"
+name = 'hojun'
 age = 10
-def print_hello():
-    print("hello world!!")
+
+def f():
+    s = 0
+    for i in range(100):
+        s += i
+    return s

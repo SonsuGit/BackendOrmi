@@ -4,22 +4,30 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-
+    <style>
+        table, tr, td {
+            border: solid 1px black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
-    <!-- https://docs.pyscript.net/unstable/guides/event-handlers.html -->
-    <div id="test" class="one"></div>
-    <input id="test2" type="text">
-    <button id="test3" py-click="functiontest()">불러옵니다.</button>
-    <div id="test4"></div>
+    <div id="output"></div>
     <py-script>
-    def functiontest(e):
-        test4 = Element('test4')
-        test4.write(test2.element.value)
+        element = js.document.createElement('h1')
+        element.innerText = "Hello"
+        js.document.getElementById("output").append(element)
 
-    test = Element('test')
-    test.write('hello')
-    test2 = Element('test2')
+        table = js.document.createElement('table')
+        for i in range(5):
+            tr = js.document.createElement('tr')
+            for j in range(4):
+                td = js.document.createElement('td')
+                td.innerText = f'hello {i} {j}'
+                tr.append(td)
+            table.append(tr)
+        output = Element('output')
+        output.element.append(table)
     </py-script>
 </body>
 </html>
