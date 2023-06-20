@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog', # 내가 만든 앱 추가
+    'user', # 내가 만든 앱 추가
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"], #myapp/templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr' # 한국어
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul' # 한국 시간
 
 USE_I18N = True
 
