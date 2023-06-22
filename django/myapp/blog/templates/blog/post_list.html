@@ -20,6 +20,7 @@
     {% for post in posts %}
         <tr>
             <td><a href="{% url 'blog:detail' pk=post.pk %}" class='btn'>{{ post.title }}</a></td>
+            <td>{{ post.content }}</td>
             <td>{{ post.writer }}</td>
         </tr>
     {% endfor %}

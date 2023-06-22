@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
-from django.urls import reverse_lazy
-
+from django.urls import reverse_lazy, reverse
 # Create your views here.
 # def index(request):
 #     if request.method == 'GET':
@@ -65,3 +64,27 @@ class Detail(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
+
+
+class Update(UpdateView):
+    model = Post
+    template_name = 'blog/post_edit.html'
+    fields = ['title', 'content']
+    # success_url = reverse_lazy('blog:list') #함수안에서 바로 쓸땐 레이지로
+
+    # initial 기능 사용 -> form에 값을 미리 넣어주기
+    def get_initial(self):
+        initial = super().get_initial()
+        post = self.get_object()
+        initial['title'] = post.title
+        initial['content'] = post.content
+        return initial
+
+    def get_success_url(self):
+        post = self.get_object() # pk 기반으로 현재 객체 가져오기
+        return reverse('blog:detail', kwargs = {'pk': post.pk})
+
+
+class Delete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('blog:list')
