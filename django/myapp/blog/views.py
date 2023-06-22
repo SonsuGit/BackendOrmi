@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy, reverse
 # Create your views here.
 # def index(request):
@@ -88,3 +88,31 @@ class Update(UpdateView):
 class Delete(DeleteView):
     model = Post
     success_url = reverse_lazy('blog:list')
+
+
+class DetailView(View):
+    def get(self, request, post_id): # post_id: 데이터베이스 post_id 테이블 이름 사용하고 싶어서
+        # list - object 상세 페이지 -> 상세 페이지 하나의 내용
+        # pk 값을 왔다갔다, 하나의 인자값이고 요청하는건 아님
+        
+        # 데이터베이스 방문
+        # 해당 글
+        post = Post.objects.get(pk=post_id)
+        # 댓글
+        comments = Comment.objects.all(pk=post_id)
+
+
+### Comment
+class CommentWrite(View):
+    # def get(self, request):
+    #     pass
+    def post(self, request, post_id):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            # 사용자에게 댓글 내용을 받아옴
+            content = form.cleaned_data['content'] # cleaned data는 원하는 값만 가지고 옴
+            # 해당 아이디에 해당하는 글을 불러옴
+            post = Post.objects.get(pk=post_id)
+            # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
+            comment = Comment.objects.create(post = post, content = content)
+            return redirect('blog:detail', pk=post_id) # 주소만 옮겨주고 렌더안함
