@@ -4,7 +4,7 @@ from . import views
 app_name = 'blog'
 
 urlpatterns = [
-    #path(패턴, 매핑) /blog/
+    # path(패턴, 매핑) /blog/
     # path("", views.index) # FBV
     # 글 목록 조회
     path("", views.List.as_view(), name = 'list'), #CBV라서 as view 붙임 /blog/
