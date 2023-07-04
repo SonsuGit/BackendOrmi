@@ -29,6 +29,17 @@ class Index(View):
         # print(post_objs)
         return render(request, 'blog/post_list.html', context)
 
+'''
+class Index(LoginRequiredMixin, View):
+    def get(self, request):
+        # Post - User연결(foreignkey)
+        # User를 이용해서 Post를 가직 온다.
+        Post.objects.filter(writer=request.user)
+        context = {
+            'post': posts,
+        }
+        return render(request, 'blog/post_list.html', context)
+'''
 
 # write
 # post - form
@@ -82,10 +93,10 @@ class Write(LoginRequiredMixin, View):
         }
         return render(request, 'blog/post_form.html')
 
-class Detail(DetailView):
-    model = Post
-    template_name = 'blog/post_detail.html'
-    context_object_name = 'post'
+# class Detail(DetailView):
+#     model = Post
+#     template_name = 'blog/post_detail.html'
+#     context_object_name = 'post'
 
 
 class Update(UpdateView):
@@ -107,9 +118,20 @@ class Update(UpdateView):
         return reverse('blog:detail', kwargs = {'pk': post.pk})
 
 
-class Delete(DeleteView):
-    model = Post
-    success_url = reverse_lazy('blog:list')
+# class Delete(DeleteView):
+#     model = Post
+#     success_url = reverse_lazy('blog:list')
+
+
+class Delete(View):
+    def post(self, request, pk): # post_id
+        post = Post.objects.get(pk=pk)
+        post.delete()
+        return redirect('blog:lost')
+    
+    # 클래스 자체에 아예 접근하지 못하게 -> LoginRequiredMixin
+    # Login이 되었을 때만 삭제 버튼이 보이게
+
 
 
 class DetailView(View):
