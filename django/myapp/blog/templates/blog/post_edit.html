@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<form method = 'post'>
+{% if form %}
+{% include 'form_error.html' %}
+{% else %}
+
+<form action = '{% url 'blog:edit' pk=post.pk %}' method = 'post'>
     {% csrf_token %}
-    {{ form.title.label_tag }}
-    <input type="text" name = '{{ form.title.name }}' value ='{{ form.initial.title }}'>
-    <br>
-    {{ form.content.label_tag }}
-    <textarea type = 'text' name = '{{ form.content.name }}'>{{ form.initial.content }}</textarea>
-    <input type="submit">
+    {{ form.as_p }}
+    <input type="submit" value='수정'>
 </form>
 
 {% endblock content %}

@@ -1,6 +1,20 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+
+{% if form %}
+<!--내용 추가-->
+    {% comment %}
+    {% for errors in form.errors.values%}
+        {% for error in errors%}
+            error
+        {% endfor %}
+    {% endcomment %}
+{% include 'form_error.html'%}
+{% else %}
+
+
+
 <h2>제목: {{ post.title }}</h2>
 
 {% if post.writer == request.user%}
@@ -30,10 +44,12 @@
     <ul>
         {% for comment in comments %}
         <li>{{ comment.content }} / {{ comment.created_at }}
-            <form action="{% url 'blog:cm-delete' pk=comment.pk %}" method = 'post'>
-                {% csrf_token %}
-                <input type="submit" value = 'X' class = 'btn btn-outline-success'>
-            </form>
+            {% if comment.writer == request.user %}
+                <form action="{% url 'blog:cm-delete' pk=comment.pk %}" method = 'post'>
+                    {% csrf_token %}
+                    <input type="submit" value = 'X' class = 'btn btn-outline-success'>
+                </form>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
@@ -51,10 +67,12 @@
 <ul>
     {% for hashtag in hashtags %}
     <li>{{ hashtag.name }}
-        <form action="{% url 'blog:tag-delete' pk=hashtag.pk %}" method = 'post'>
-            {% csrf_token %}
-            <input type="submit" value = 'X' class = 'btn btn-outline-success'>
-        </form>
+        {% if hashtag.writer == request.user %}
+            <form action="{% url 'blog:tag-delete' pk=hashtag.pk %}" method = 'post'>
+                {% csrf_token %}
+                <input type="submit" value = 'X' class = 'btn btn-outline-success'>
+            </form>
+        {% endif %}
     </li>
     {% endfor %}
 </ul>

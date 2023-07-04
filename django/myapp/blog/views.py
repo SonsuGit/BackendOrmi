@@ -117,6 +117,30 @@ class Update(UpdateView):
         post = self.get_object() # pk 기반으로 현재 객체 가져오기
         return reverse('blog:detail', kwargs = {'pk': post.pk})
 
+class Update(View):
+    def get(self, request, pk):
+        post = Post.objects.get(pk = pk)
+        form = PostForm(initial={'title': post.title, 'content': post.content})
+        context = {
+            'form' : form,
+            'post' : post
+        }
+        return render(request, 'blog/post_edit.html', context)
+    def post(self, request, pk):
+        post = Post.objects.get(pk = pk)
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post.title = form.cleaned_data['title']
+            post.content = form.cleaned_data['content']
+            post.save()
+            return redirect('blog:detail', pk = pk)
+        
+        form.add_error('폼이 유효하지 않습니다.')
+        context = {
+            'form' : form
+        }
+        return render(request, 'blog/form_error.html', context)
+
 
 # class Delete(DeleteView):
 #     model = Post
@@ -174,10 +198,17 @@ class CommentWrite(View):
             content = form.cleaned_data['content'] # cleaned data는 원하는 값만 가지고 옴
             # 해당 아이디에 해당하는 글을 불러옴
             post = Post.objects.get(pk=pk)
+            # 유저 정보 가져오기
+            writer = request.user
             # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
-            comment = Comment.objects.create(post = post, content = content)
-            # comment = Comment(post=post) -> comment.save
+            comment = Comment.objects.create(post = post, content = content, writer = writer)
+            # comment = Comment(post=post) -> comment.save()
             return redirect('blog:detail', pk=pk) # 주소만 옮겨주고 렌더안함
+        form.add_error('폼이 유효하지 않습니다.')
+        context = {
+            'form' : form
+        }
+        return render(request, 'blog/form_error.html', context)
 
 
 class CommentDelete(View):
@@ -201,10 +232,17 @@ class HashTagWrite(View):
             name = form.cleaned_data['name'] # cleaned data는 원하는 값만 가지고 옴
             # 해당 아이디에 해당하는 글을 불러옴
             post = Post.objects.get(pk=pk)
+            # 유저 정보 가져오기
+            writer = request.user
             # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
-            hashtag = HashTag.objects.create(post = post, name = name)
+            hashtag = HashTag.objects.create(post = post, name = name, writer = writer)
             # comment = Comment(post=post) -> comment.save
             return redirect('blog:detail', pk = pk)
+        form.add_error('폼이 유효하지 않습니다.')
+        context = {
+            'form' : form
+        }
+        return render(request, 'blog/form_error.html', context)
 
 
 class HashTagDelete(View):
