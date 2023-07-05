@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
-from .models import User
+# from .models import User
 from .forms import RegisterForm, LoginForm
 
 # Create your views here.
@@ -13,58 +13,58 @@ from .forms import RegisterForm, LoginForm
 
 ### Registration
 class Registration(View):
-    # 버튼 눌렀을때 작성페이지
     def get(self, request):
-        # 회원 가입 페이지
+        if request.user.is_authenticated:
+            return redirect('blog:list')
+        # 회원가입 페이지
         # 정보를 입력할 폼을 보여주어야 한다.
         form = RegisterForm()
         context = {
-            'form' : form
+            'form': form,
+            'title': 'User'
         }
         return render(request, 'user/user_register.html', context)
-
-    # 작성 다 하고나서 보내기
+    
     def post(self, request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('blog:list')
+            return redirect('user:login')
 
 
 ### Login
 class Login(View):
     def get(self, request):
-        ### 추가한 내용
         if request.user.is_authenticated:
             return redirect('blog:list')
-
+        
         form = LoginForm()
         context = {
-            'form': form
+            'form': form,
+            'title': 'User'
         }
         return render(request, 'user/user_login.html', context)
-
+        
     def post(self, request):
-        ### 추가한 내용
         if request.user.is_authenticated:
             return redirect('blog:list')
-
-        form = LoginForm(request.POST)
+        
+        form = LoginForm(request, request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
+            email = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=email, password=password) # True, False
-
+            
             if user:
                 login(request, user)
                 return redirect('blog:list')
-
-            form.add_error(None, '아이디가 없습니다.')
-
+            
+        form.add_error(None, '아이디가 없습니다.')
+        
         context = {
             'form': form
         }
-
+        
         return render(request, 'user/user_login.html', context)
 
 
