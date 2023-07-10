@@ -19,14 +19,11 @@ AUTH_USER_MODEL = 'user.User'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Login URL
-LOGIN_URL = '/user/login'
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9@o$2xraddb1(&2zw%pzgj^fyjd(vixj0#&^u4(=kj**+^^x56'
+SECRET_KEY = 'django-insecure-g4+0ly4z6=c3x4y0xc!2y8d4uc4v%p_rjbe$edk5r9d%xrt9np'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', # 수정
-    'blog', # 내가 만든 앱을 추가
-    'user',
+    'rest_framework',
+    'blog',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +60,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"], # myapp/templates
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -112,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'  # 한국어
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'Asia/Seoul' # 한국 시간
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
